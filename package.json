@@ -1,0 +1,19 @@
+{
+  "name": "simpleloginsystem",
+  "version": "1.0.0",
+  "description": "node.js and express server side project </br> here we'll be creating a \"complex\" server side project using nodeJS, express and some others libraries </br> well not be storing data in a database. all the data of this project will be stored locally </br> for now this ist it. if you are enjoying this project dont forget to give a star in my github profile: </br> https://github.com/devguicordeiro",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
+  }
+}
