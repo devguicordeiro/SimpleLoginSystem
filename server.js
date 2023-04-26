@@ -7,12 +7,13 @@ const app = express();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
-const flash = require("express-session");
+const session = require("express-session");
 
-const initializePassport = require("./passport-config");
-initializePassport(passport, (email) =>
-  users.find((user) => user.email === email)
-);
+const initializePassport = require('./passport-config')
+initializePassport(
+  passport,
+  email => users.find(user => user.email === email),
+)
 
 const users = [];
 
@@ -26,8 +27,12 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
+    saveUninitialized: false,
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", (req, res) => {
   res.render("index.ejs", { name: "Guilherme" });
@@ -37,7 +42,14 @@ app.get("/login", (req, res) => {
   res.render("login.ejs");
 });
 
-app.post("/login", (req, res) => {});
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
 
 app.get("/register", (req, res) => {
   res.render("register.ejs");
