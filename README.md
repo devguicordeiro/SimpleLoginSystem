@@ -8,3 +8,6 @@ well not be storing data in a database. all the data of this project will be sto
 for now this ist it. if you are enjoying this project dont forget to give a star in my github profile:
 </br>
 https://github.com/devguicordeiro
+</br>
+
+libraries used in this project: express, express session, express flash, bcrypt, passport and method override
